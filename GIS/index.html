@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hongye Li's Research Project</title>
+  <style>
+    :root{
+      --fg:#111418;
+      --muted:#4b5563;
+      --radius:20px;
+      --shadow:0 10px 28px rgba(0,0,0,.10);
+      --maxw:1040px;
+    }
+    html,body{height:100%; margin:0; color:var(--fg); background:#fff;}
+    a{color:inherit}
+    *{font-family:"Times New Roman", Times, serif !important;}
+
+    .stickybar{
+      position:fixed; top:0; left:0; right:0; z-index:10000;
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      background:rgba(168,174,184,.94);
+      box-shadow:0 4px 16px rgba(0,0,0,.18);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .stickybar .inner{
+      max-width:none; width:100%; margin:0;
+      display:flex; align-items:center; justify-content:flex-start; gap:12px;
+      padding:8px 0 8px 14px; text-align:left;
+    }
+    .stickybar .title{
+      font-weight:700; letter-spacing:.01em; font-size:clamp(12px,1.1vw,16px); color:#2c3440;
+      text-transform:uppercase;
+    }
+
+    body{padding-top: var(--sticky-h, 56px);}
+
+    .hero{
+      min-height:70svh; display:grid; place-items:center; text-align:center; padding:8vh 6vw;
+      background:linear-gradient(180deg,#f6f7f9 0%, #cbd0d6 100%);
+    }
+    .hero h1{
+      margin:0 0 .45em; font-weight:900; letter-spacing:.02em; font-size:clamp(28px,4.6vw,54px); line-height:1.15;
+      opacity:0; transform:translateY(10px) scale(.98); animation:pop 1.2s cubic-bezier(.2,.9,.2,1) .18s forwards;
+    }
+    .hero h1 .line{display:block;}
+    .hero p{
+      margin:0; color:var(--muted); font-size:clamp(14px,1.6vw,20px);
+      opacity:0; transform:translateY(10px) scale(.98); animation:pop 1.35s cubic-bezier(.2,.9,.2,1) .38s forwards;
+    }
+    @keyframes pop{0%{opacity:0; transform:translateY(10px) scale(.98)}60%{opacity:1; transform:translateY(0) scale(1.02)}100%{opacity:1; transform:translateY(0) scale(1)}}
+    @media (prefers-reduced-motion: reduce){.hero h1,.hero p{animation:none;opacity:1;transform:none}}
+
+    .section{padding:6vh 6vw; background:linear-gradient(180deg,#f3f4f6 0%, #c5cbd3 100%);} 
+    .section.alt{background:linear-gradient(180deg,#eef1f4 0%, #b8bec6 100%);} 
+    .wrap{max-width:var(--maxw); margin:0 auto;}
+    .section h2{margin:0 0 26px; font-size:clamp(18px,2.4vw,28px); letter-spacing:.02em; font-weight:800; text-align:center; text-transform:uppercase;}
+
+    .embed-wrap{width:min(94vw, 860px); aspect-ratio: 1000 / 650; background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); margin:0 auto;}
+    .embed-wrap iframe{width:100%; height:100%; border:0; display:block;}
+
+    .gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px;}
+    @media (max-width: 1000px){ .gallery{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (max-width: 640px){ .gallery{grid-template-columns:1fr;} }
+    figure{margin:0; background:#fff; border-radius:14px; overflow:hidden; box-shadow:var(--shadow);} 
+    figure img{display:block; width:100%; height:auto;}
+
+    .site-footer{padding:28px 6vw 42px; text-align:center; font-size:14px; color:#4b5563;
+      background:linear-gradient(180deg,#eef1f4 0%, #b8bec6 100%);} 
+    .site-footer .wrap{max-width:var(--maxw); margin:0 auto;}
+  </style>
+</head>
+<body>
+  <div class="stickybar" role="banner" aria-label="Project sticky bar">
+    <div class="inner">
+      <span class="title">Hongye Li's Research Project for Tianjin Qiyue New Energy Project Management Co., Ltd.</span>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <h1>
+        <span class="line">DISTRIBUTION CENTER PLACEMENT</span>
+        <span class="line">STRATEGY FOR HVAC LOGISTICS IN</span>
+        <span class="line">TIANJIN</span>
+      </h1>
+      <p>GIS Simulation · Support Vector Machine Algorithm</p>
+    </div>
+  </header>
+
+  <section class="section" id="simulation">
+    <div class="wrap">
+      <h2>Interactive Simulation</h2>
+      <div class="embed-wrap">
+        <iframe allow="fullscreen"
+          src="https://cloud.anylogic.com/assets/embed?modelId=2c3aa87d-1d26-4673-ad2d-01b4f60c90f8"
+          title="AnyLogic Cloud Simulation"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="svm">
+    <div class="wrap">
+      <h2>Support Vector Machine · Key Visualizations</h2>
+      <div class="gallery">
+        <figure><img src="fig1_time_surface.png" alt="SVR predicted driving time surface" /></figure>
+        <figure><img src="fig2_km_surface.png" alt="SVR predicted distance surface" /></figure>
+        <figure><img src="fig3_pareto.png" alt="Pareto frontier vs observed points" /></figure>
+        <figure><img src="fig4_res_time.png" alt="Residuals histogram for time" /></figure>
+        <figure><img src="fig5_res_km.png" alt="Residuals histogram for distance" /></figure>
+        <figure><img src="fig6_pdp_time.png" alt="Partial dependence for time" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p style="margin:6px 0;">Universiteit van Amsterdam - BSc in Human Geography and Planning.</p>
+      <p style="margin:6px 0 0;">Contact: <a href="mailto:hongye.li@student.uva.nl">hongye.li@student.uva.nl</a> / <a href="mailto:lihongye40@gmail.com">lihongye40@gmail.com</a>  Tel: +86 13352021290</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const bar = document.querySelector('.stickybar');
+      if(!bar) return;
+      function setH(){ document.documentElement.style.setProperty('--sticky-h', bar.offsetHeight + 'px'); }
+      setH();
+      window.addEventListener('resize', setH);
+    })();
+  </script>
+</body>
+</html>
